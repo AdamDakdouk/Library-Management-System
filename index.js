@@ -3,9 +3,8 @@ const express = require("express");
 const sequelize = require('./database/config');
 
 try {
-    // sync database
+
     sequelize.sync().then(() => {
-        //  application logic after syncing the database
 
         const app = express();
 
