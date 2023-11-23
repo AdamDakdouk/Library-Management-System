@@ -1,21 +1,41 @@
-const {Datatypes} = require("sequelize");
+const { DataTypes } = require("sequelize");
 const sequelize = require("../database/config");
 const Book = require("./Book");
 
 const Student = sequelize.define('Student', {
     student_id: {
-        type: Datatypes.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
 
-    student_name: {
-        type: Datatypes.STRING,
+    student_first_name: {
+        type: DataTypes.STRING,
         allowNull: false,
     },
 
+    student_last_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    student_email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    student_password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+    student_mobile: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+
     student_age: {
-        type: Datatypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
     },
 }, {
@@ -25,5 +45,7 @@ const Student = sequelize.define('Student', {
 });
 
 Student.associate = () => {
-    Student.hasMany(Book, {foreignKey: 'book_id'})
+    Student.hasMany(Book, { foreignKey: 'student_id' })
 }
+
+module.exports = Student;

@@ -1,33 +1,41 @@
-const {Datatypes} = require("sequelize");
+const { DataTypes } = require('sequelize');
 const sequelize = require("../database/config");
 const Student = require("./Student");
 
 const Book = sequelize.define("Book", {
     book_id: {
-        type: Datatypes.INTEGER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
 
     student_id: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        references: {
+            model: 'Book',
+            key: 'student_id',
+        }
     },
 
     book_title: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     },
 
     book_author: {
-        type: Datatypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
     },
 
-    publication: {
-        type: Datatypes.DATE,
+    book_min_age_required: {
+        type: DataTypes.INTEGER,
         allowNull: false,
-    },    
+    },
+
+    book_publication: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
 }, {
     tableName: "books",
     createdAt: false,
@@ -35,5 +43,7 @@ const Book = sequelize.define("Book", {
 });
 
 Book.associate = () => {
-    Book.belongsTo(Student, {foreignKey: 'student_id'});
+    Book.belongsTo(Student, { foreignKey: 'student_id' });
 }
+
+module.exports = Book;

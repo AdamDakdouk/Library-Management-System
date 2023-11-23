@@ -1,11 +1,11 @@
-const {Datatypes} = require("sequelize");
+const { Datatypes } = require("sequelize");
 const sequelize = require("../database/config");
 
 const Admin = sequelize.define("Admin", {
     admin_id: {
-       type: Datatypes.INTEGER,
-       allowNull: false,
-       autoIncrement: true, 
+        type: Datatypes.INTEGER,
+        allowNull: false,
+        autoIncrement: true,
     },
 
     admin_name: {
