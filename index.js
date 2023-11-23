@@ -2,6 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const sequelize = require('./database/config');
 
+// models import to sync the database 
+const book = require("./models/Book");
+const student = require("./models/Student");
+const issuedBook = require("./models/IssuedBook");
+
 try {
 
     sequelize.sync().then(() => {
