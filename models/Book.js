@@ -12,7 +12,7 @@ const Book = sequelize.define("Book", {
     student_id: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Book',
+            model: 'Student',
             key: 'student_id',
         }
     },
@@ -36,14 +36,14 @@ const Book = sequelize.define("Book", {
         type: DataTypes.DATE,
         allowNull: false,
     },
+
+    book_availability: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+    }
 }, {
     tableName: "books",
-    createdAt: false,
-    updatedAt: false,
+    timestamps: true,
 });
-
-Book.associate = () => {
-    Book.belongsTo(Student, { foreignKey: 'student_id' });
-}
 
 module.exports = Book;

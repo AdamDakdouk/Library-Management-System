@@ -40,8 +40,7 @@ const Student = sequelize.define('Student', {
     },
 }, {
     tableName: "students",
-    createdAt: false,
-    updatedAt: false,
+    timestamps: true,
 });
 
 Student.associate = () => {

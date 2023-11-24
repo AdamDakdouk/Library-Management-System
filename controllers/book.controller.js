@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const { getAllBooks, addBook, updateBook } = require("../services/book.services");
+const { getAllBooks, addBook, updateBook, getBookById, deleteBook } = require("../services/book.services");
 
 /**
  * Retrieves all books from the database.
@@ -32,7 +32,7 @@ const getBookByIdController = async (req, res) => {
     }
 
     try {
-        const book = await getStudentById(book_id);
+        const book = await getBookById(book_id);
         res.status(200).json(book);
     } catch (err) {
         res.status(500).json(err)
@@ -49,13 +49,13 @@ const getBookByIdController = async (req, res) => {
 const addBookController = async (req, res) => {
 
     try {
-
-        const { book_title, book_author, book_min_age_required, book_publication } = req.body;
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+
+        const { book_title, book_author, book_min_age_required, book_publication } = req.body;
 
         const response = await addBook(book_title, book_author, book_min_age_required, book_publication);
         res.status(201).json({ response });
@@ -105,7 +105,7 @@ const deletedBookController = async (req, res) => {
     }
 
     try {
-        const response = await deleteStudent(book_id);
+        const response = await deleteBook(book_id);
         res.status(201).json({ response });
     } catch (err) {
         res.status(500).json(err)

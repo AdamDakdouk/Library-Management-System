@@ -1,5 +1,6 @@
 const { validationResult } = require("express-validator");
-const { getAllStudents, getStudentById, insertStudent, updateStudent, deleteStudent } = require("../services/student.services");
+const { getAllStudents, getAllStudentsWithBooks ,getStudentById, insertStudent, updateStudent, deleteStudent } = require("../services/student.services");
+
 
 /**
  * Retrieves all students from the database.
@@ -49,13 +50,14 @@ const getStudentByIdController = async (req, res) => {
 const insertStudentController = async (req, res) => {
 
     try {
-        const { student_first_name, student_last_name, student_email,
-            student_password, student_mobile, student_age } = req.body;
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+
+        const { student_first_name, student_last_name, student_email,
+            student_password, student_mobile, student_age } = req.body;
 
         const response = await insertStudent(student_first_name, student_last_name, student_email,
             student_password, student_mobile, student_age);
@@ -76,16 +78,15 @@ const insertStudentController = async (req, res) => {
 const updateStudentController = async (req, res) => {
 
     try {
-        const { student_first_name, student_last_name, student_email,
-            student_password, student_mobile, student_age } = req.body;
-
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
         }
+        const { student_id, student_first_name, student_last_name, student_email,
+            student_password, student_mobile, student_age } = req.body;
 
-        const response = await updateStudent(student_first_name, student_last_name, student_email,
+        const response = await updateStudent(student_id, student_first_name, student_last_name, student_email,
             student_password, student_mobile, student_age);
         res.status(201).json({ response });
     } catch (err) {

@@ -19,7 +19,7 @@ const IssuedBook = sequelize.define('IssuedBook', {
     },
 
     student_first_name: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         references: {
             model: 'Student',
             key: 'student_first_name'
@@ -44,10 +44,14 @@ const IssuedBook = sequelize.define('IssuedBook', {
 
 }, {
     tableName: 'IssuedBook',
+    timestamps: false,
 });
 
 IssuedBook.associate = () => {
-    IssuedBook.hasOne(Student, { foreignKey: "student_id" })
+    IssuedBook.hasMany(Student, { foreignKey: "student_id" })
 }
 
+IssuedBook.associate = () => {
+    IssuedBook.hasMany(Book, {foreignKey: "book_id" })
+}
 module.exports = IssuedBook;

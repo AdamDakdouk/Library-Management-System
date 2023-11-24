@@ -53,6 +53,10 @@ To get a local copy up and running follow these simple example steps:
    npm install dotenv
    ```
 
+```sh
+   npm install moment
+   ```
+
 3. Run ```npm run dev``` to listen to the API on port 3001
 
 
