@@ -1,4 +1,4 @@
-# WorkoutTrackerProj
+# LibraryManagementSystem
 
 No educational institution can exist without a library management system. It Is an important part of every school and college and helps the librarian to keep records of available books as well as issued books. Moreover, a library management system helps in different ways by providing students the facility to learn plus improve knowledge and skills.
 
