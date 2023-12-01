@@ -29,32 +29,32 @@ To get a local copy up and running follow these simple example steps:
    
 2. Install NPM packages  
 
-```sh
-   npm install sequelize
+   ```sh
+      npm install sequelize
    ```
 
-```sh
-   npm install mysql2
+   ```sh
+      npm install mysql2
    ```
    
-```sh
-   npm install express
+   ```sh
+      npm install express
    ```
 
-```sh
-   npm install nodemon
+   ```sh
+      npm install nodemon
    ```
 
-```sh
-   npm install express-validator
+   ```sh
+      npm install express-validator
    ```
 
-```sh
-   npm install dotenv
+   ```sh
+      npm install dotenv
    ```
 
-```sh
-   npm install moment
+   ```sh
+      npm install moment
    ```
 
 3. Run ```npm run dev``` to listen to the API on port 3001
