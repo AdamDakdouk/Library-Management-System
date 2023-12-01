@@ -13,8 +13,8 @@ const getAllStudentsController = async (req, res) => {
     try {
         const students = await getAllStudents();
         res.status(200).json(students);
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error getting all students: ${error}`);
     }
 }
 
@@ -35,8 +35,8 @@ const getStudentByIdController = async (req, res) => {
     try {
         const student = await getStudentById(student_id);
         res.status(200).json(student);
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error getting student: ${error}`);
     }
 }
 
@@ -63,8 +63,8 @@ const insertStudentController = async (req, res) => {
             student_password, student_mobile, student_age);
 
         res.status(201).json({ response });
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error inserting student: ${error}`);
     }
 }
 
@@ -89,8 +89,8 @@ const updateStudentController = async (req, res) => {
         const response = await updateStudent(student_id, student_first_name, student_last_name, student_email,
             student_password, student_mobile, student_age);
         res.status(201).json({ response });
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error updating student: ${error}`);
     }
 }
 
@@ -110,8 +110,8 @@ const deletedStudentController = async (req, res) => {
     try {
         const response = await deleteStudent(student_id);
         res.status(201).json({ response });
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`error deleting student: ${error}`);
     }
 }
 

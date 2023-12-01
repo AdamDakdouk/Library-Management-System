@@ -12,8 +12,8 @@ const getAllBooksController = async (req, res) => {
     try {
         const books = await getAllBooks();
         res.status(200).json(books);
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error getting all books: ${error}`);
     }
 }
 
@@ -34,8 +34,8 @@ const getBookByIdController = async (req, res) => {
     try {
         const book = await getBookById(book_id);
         res.status(200).json(book);
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error getting book: ${error}`);
     }
 }
 
@@ -59,8 +59,8 @@ const addBookController = async (req, res) => {
 
         const response = await addBook(book_title, book_author, book_min_age_required, book_publication);
         res.status(201).json({ response });
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error creating book: ${error}`);
     }
 }
 
@@ -86,8 +86,8 @@ const updateBookController = async (req, res) => {
         const response = await updateBook(book_id, book_title, book_author, book_min_age_required,
             book_publication);
         res.status(201).json({ response });
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error updating book: ${error}`);
     }
 }
 
@@ -107,8 +107,8 @@ const deletedBookController = async (req, res) => {
     try {
         const response = await deleteBook(book_id);
         res.status(201).json({ response });
-    } catch (err) {
-        res.status(500).json(err)
+    } catch (error) {
+        res.status(500).json(`Error deleting book: ${error}`);
     }
 }
 

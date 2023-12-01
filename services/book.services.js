@@ -2,6 +2,11 @@ const Student = require("../models/Student");
 const Book = require("../models/Book");
 const moment = require("moment/moment");
 
+/**
+ * Retrieves all books from the database.
+ *
+ * @returns {Book[]}
+ */
 const getAllBooks = async () => {
     try {
         const books = await Book.findAll();
@@ -9,11 +14,17 @@ const getAllBooks = async () => {
             return "There are no books found";
         }
         return books;
-    } catch (err) {
-        console.error('Error getting all books ', err);
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Retrieves a book from the database specified by his id
+ * 
+ * @param {integer} id - ID of the book 
+ * @returns {Student} 
+ */
 const getBookById = async (id) => {
     try {
         const book = await Book.findByPk(id);
@@ -21,11 +32,20 @@ const getBookById = async (id) => {
             return `Book with ID ${id} not found`;
         }
         return book;
-    } catch (err) {
-        console.error("Error getting the book ", err);
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Inserts a new book to the database
+ * 
+ * @param {string} title - Book title 
+ * @param {string} author -  Author of the book 
+ * @param {string} minAgeRequired - Minimum age required to be able to read book
+ * @param {string} publication - book publication 
+ * @returns {Student}
+ */
 const addBook = async (title, author, minAgeRequired, publication) => {
     try {
         const newBook = await Book.create({
@@ -37,11 +57,21 @@ const addBook = async (title, author, minAgeRequired, publication) => {
 
         return newBook.toJSON();
 
-    } catch (err) {
-        console.error("Error creating book ", err)
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Inserts a new book to the database
+ * 
+ * @param {integer} id - ID of the book
+ * @param {string} title - Book title 
+ * @param {string} author -  Author of the book 
+ * @param {string} minAgeRequired - Minimum age required to be able to read book
+ * @param {string} publication - book publication 
+ * @returns {Student}
+ */
 const updateBook = async (id, title, author, minAgeRequired, publication) => {
     try {
 
@@ -55,18 +85,24 @@ const updateBook = async (id, title, author, minAgeRequired, publication) => {
         const updatedBook = await Book.findOne({ where: { student_id: id } });
         return updatedBook;
 
-    } catch (err) {
-        console.error("Error updating book ", err)
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Deletes a book specified by its id
+ * 
+ * @param {integer} id - ID of the book 
+ * @returns {String} 
+ */
 const deleteBook = async (id) => {
     try {
         const book = await Book.findByPk(id);
         if (!book) {
             return "Book not found. Couldn't delete"
         }
-        
+
         const deletedBook = await Book.destroy({
             where: {
                 book_id: id,
@@ -79,8 +115,8 @@ const deleteBook = async (id) => {
         } else {
             return "No book was deleted";
         }
-    } catch (err) {
-        console.error("Error deleting book ", err);
+    } catch (error) {
+        throw new Error(error);
     }
 }
 

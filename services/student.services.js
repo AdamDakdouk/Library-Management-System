@@ -1,6 +1,11 @@
 const Student = require("../models/Student");
 const Book = require("../models/Book");
 
+/**
+ * Retrieves all students from the database.
+ *
+ * @returns {Student[]}
+ */
 const getAllStudents = async () => {
     try {
         const students = await Student.findAll();
@@ -8,11 +13,17 @@ const getAllStudents = async () => {
             return "There are no students found";
         }
         return students;
-    } catch (err) {
-        console.error('Error getting all students ', err);
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Retrieves a student from the database specified by his id
+ * 
+ * @param {integer} id - ID of the student 
+ * @returns {Student} 
+ */
 const getStudentById = async (id) => {
     try {
         const student = await Student.findByPk(id);
@@ -21,11 +32,22 @@ const getStudentById = async (id) => {
         }
 
         return student;
-    } catch (err) {
-        console.error("Error getting student ", err);
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Inserts a new student to the database
+ * 
+ * @param {string} firstName - Student's first name 
+ * @param {string} lastName -  Student's last name 
+ * @param {string} email - Student's email
+ * @param {string} email - password of email 
+ * @param {string} mobile - Phone number 
+ * @param {integer} age - Student's age 
+ * @returns {Student}
+ */
 const insertStudent = async (firstName, lastName, email, password, mobile, age) => {
     try {
         const newStudent = await Student.create({
@@ -38,11 +60,23 @@ const insertStudent = async (firstName, lastName, email, password, mobile, age) 
         });
 
         return newStudent.toJSON();
-    } catch (err) {
-        console.error("Error inserting student ", err)
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Updates the info of a student specified by his id
+ * 
+ * @param {integer} id - Student's id
+ * @param {string} firstName - Student's first name 
+ * @param {string} lastName -  Student's last name 
+ * @param {string} email - Student's email
+ * @param {string} email - password of email 
+ * @param {string} mobile - Phone number 
+ * @param {integer} age - Student's age 
+ * @returns {Student}
+ */
 const updateStudent = async (id, firstName, lastName, email, password, mobile, age) => {
     try {
         const updatedStudent = await Student.update({
@@ -57,11 +91,17 @@ const updateStudent = async (id, firstName, lastName, email, password, mobile, a
         const updateStudent = await Student.findOne({ where: { student_id: id } });
         return updateStudent;
 
-    } catch (err) {
-        console.error("Error updating student ", err)
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
+/**
+ * Deletes a student specified by his id
+ * 
+ * @param {integer} id - ID of the student 
+ * @returns {String} 
+ */
 const deleteStudent = async (id) => {
     try {
         const student = await Student.findByPk(id);
@@ -82,8 +122,8 @@ const deleteStudent = async (id) => {
         } else {
             return "No student was deleted";
         }
-    } catch (err) {
-        console.error("Error deleting student ", err);
+    } catch (error) {
+        throw new Error(error);
     }
 }
 

@@ -9,8 +9,8 @@ const getAllIssuedBooks = async () => {
             return "There are no books issued";
         }
         return issuedBooks;
-    } catch (err) {
-        console.error('Error getting all issued books ', err);
+    } catch (error) {
+        throw new Error(error);
     }
 }
 
@@ -26,14 +26,14 @@ const issueBook = async (studentID, bookID) => {
             return "Invalid book ID"
         }
 
-        if(!book.book_availability){
+        if (!book.book_availability) {
             return "book is not available right now";
         }
 
-        if(student.student_age < book.book_min_age_required){
+        if (student.student_age < book.book_min_age_required) {
             return "Student doesn't meet the required age. Cannot issue book."
         }
-        
+
         const newIssue = await IssuedBook.create({
             student_id: studentID,
             student_first_name: student.student_first_name,
@@ -48,7 +48,7 @@ const issueBook = async (studentID, bookID) => {
 
         return newIssue.toJSON();
     } catch (error) {
-        console.error('Couldn\'t issue book', error);
+        throw new Error(error);
     }
 }
 
@@ -59,13 +59,13 @@ const returnBook = async (bookID) => {
             return "Invalid book ID"
         }
 
-        if(book.book_availability){
+        if (book.book_availability) {
             return "book is already available/returned"
         }
-        
+
         const student = await Student.findByPk(book.student_id);
 
-        const issue = await IssuedBook.findOne({ where: {book_id: bookID} })
+        const issue = await IssuedBook.findOne({ where: { book_id: bookID } })
         const deleteIssue = IssuedBook.destroy({
             where: {
                 issue_id: issue.issue_id,
@@ -79,7 +79,7 @@ const returnBook = async (bookID) => {
 
         return `Book with ID ${bookID} was successfully returned from student with ID ${student.student_id}`;
     } catch (error) {
-        console.error('Couldn\'t return book', error);
+        throw new Error(error);
     }
 }
 

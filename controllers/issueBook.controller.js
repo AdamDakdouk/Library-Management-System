@@ -12,7 +12,7 @@ const getAllIssuedBooksController = async (req, res) => {
         const issuedBooks = await getAllIssuedBooks();
         res.status(200).json(issuedBooks);
     } catch (error) {
-        res.status(500).json(err);
+        res.status(500).json(`Error getting all issued books: ${error}` );
     }
 }
 
@@ -29,7 +29,7 @@ const issueBookController = async (req, res) => {
         const response = await issueBook(student_id, book_id);
         res.status(200).json(response);
     } catch (error) {
-        res.status(500).json(err);
+        res.status(500).json(`Couldn\'t issue book: ${error}`);
     }
 }
 
@@ -46,7 +46,7 @@ const returnBookController = async (req, res) => {
         const response = await returnBook(book_id);
         res.status(200).json(response);
     } catch (error) {
-        res.status(500).json(err);
+        res.status(500).json(`Couldn\'t return book: ${error}`);
     }
 }
 
