@@ -20,7 +20,7 @@ To get a local copy up and running follow these simple example steps:
   npm install node
   ```
 
-### Instalation 
+### Installation 
 
 1. Clone the repo
    ```sh
@@ -62,11 +62,11 @@ To get a local copy up and running follow these simple example steps:
 
 ## Configuration
 
- Enter your Database connection cofigeration in the  "config.js" file 
- Database Host, Databse password , Database Name 
+ Enter your database connection confugiration in the ".env" file 
+ Check .env.example for reference
 
 ## Usage
-some of the methods found in the project =>
+some of the methods found in the project:
 
 getStudentByID(id): Retrieve student details by ID.
 insertStudent(student): insert student to database.
