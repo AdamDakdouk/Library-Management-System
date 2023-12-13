@@ -57,6 +57,26 @@ To get a local copy up and running follow these simple example steps:
       npm install moment
    ```
 
+   ```sh
+      npm install jsonwebtoken
+   ```
+
+   ```sh
+      npm install ejs
+   ```
+
+   ```sh
+      npm install cors
+   ```
+
+   ```sh
+      npm install crypto
+   ```
+
+   ```sh
+      npm install body-parser
+   ```
+
 3. Run ```npm run dev``` to listen to the API on port 3001
 
 
