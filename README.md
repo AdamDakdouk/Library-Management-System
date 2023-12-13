@@ -17,7 +17,7 @@ To get a local copy up and running follow these simple steps:
 *
   npm
   ```sh
-  npm install node
+  npm install node.js
   ```
 
 ### Installation 
