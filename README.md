@@ -5,7 +5,7 @@ No educational institution can exist without a library management system. It Is 
 ## Table of Contents
 
 - [Getting Started](#getting-started)
-- [Installation](#instalation)
+- [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
 
