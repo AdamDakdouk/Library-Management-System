@@ -1,6 +1,6 @@
 # LibraryManagementSystem
 
-No educational institution can exist without a library management system. It Is an important part of every school and college and helps the librarian to keep records of available books as well as issued books. Moreover, a library management system helps in different ways by providing students the facility to learn plus improve knowledge and skills.
+No educational institution can exist without a library management system. It is an important part of every school and college and helps the librarian to keep records of available books as well as issued books. 
 
 ## Table of Contents
 
@@ -86,17 +86,17 @@ To get a local copy up and running follow these simple steps:
  Check .env.example for reference
 
 ## Usage
-some of the methods found in the project:  
+Some of the methods found in the project:  
 
-getStudentByID(id): Retrieve student details by ID.  
-insertStudent(student): insert student to database.  
-deleteStudent(id): Delete a student.  
-updateStudent(id): Update a student  
-getBookById(id): get book details  
-deleteBook(id): Delete a book.  
-insertBook(book): insert a book into the database   
-updateBook(book): update a specified book  
-issueBook(student_id, book_id): Issue a book to a student  
-returnBook(student_id, book_id): return a book from a student
+- getStudentByID(id): Retrieve student details by ID    
+- insertStudent(student): insert student to database   
+- deleteStudent(id): Delete a student    
+- updateStudent(id): Update a student  
+- getBookById(id): get book details  
+- deleteBook(id): Delete a book  
+- insertBook(book): insert a book into the database   
+- updateBook(book): update a specified book  
+- issueBook(student_id, book_id): Issue a book to a student  
+- returnBook(student_id, book_id): return a book from a student
 
 
