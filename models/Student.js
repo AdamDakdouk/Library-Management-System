@@ -34,12 +34,6 @@ const Student = sequelize.define('Student', {
         allowNull: false,
     },
 
-    // Password associated with the student's account.
-    student_password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-
     // Mobile number of the student (optional).
     student_mobile: {
         type: DataTypes.STRING,

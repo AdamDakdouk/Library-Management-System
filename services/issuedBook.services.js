@@ -2,6 +2,10 @@ const Student = require("../models/Student");
 const Book = require("../models/Book");
 const IssuedBook = require("../models/IssuedBook")
 
+/**
+ * Retrieves all issued books from the database
+ * @returns {IssuedBook}
+ */
 const getAllIssuedBooks = async () => {
     try {
         const issuedBooks = await IssuedBook.findAll();
@@ -14,6 +18,12 @@ const getAllIssuedBooks = async () => {
     }
 }
 
+/**
+ * Issues a book to student
+ * @param {int} studentID - Student id
+ * @param {int} bookID - Book id
+ * @returns {IssuedBook}
+ */
 const issueBook = async (studentID, bookID) => {
     try {
         const student = await Student.findByPk(studentID);
@@ -52,6 +62,11 @@ const issueBook = async (studentID, bookID) => {
     }
 }
 
+/**
+ * Returns an issued book
+ * @param {int} bookID - Book id
+ * @returns 
+ */
 const returnBook = async (bookID) => {
     try {
         const book = await Book.findByPk(bookID);

@@ -5,16 +5,16 @@ const { check } = require("express-validator");
  */
 const addBookValidation = [
     // Check if the book title is not empty.
-    check("book_title").notEmpty().withMessage("Book title is required"),
+    check("book.book_title").notEmpty().withMessage("Book title is required"),
 
     // Check if the book author is not empty.
-    check("book_author").notEmpty().withMessage("Book author is required"),
+    check("book.book_author").notEmpty().withMessage("Book author is required"),
 
     // Check if the minimum required age is not empty.
-    check("book_min_age_required").notEmpty().withMessage("Minimum required age is required"),
+    check("book.book_min_age_required").notEmpty().withMessage("Minimum required age is required"),
 
     // Check if the book publication date is not empty.
-    check("book_publication").notEmpty().withMessage("Book publication is required"),
+    check("book.book_publication").notEmpty().withMessage("Book publication is required"),
 ];
 
 /**
@@ -22,19 +22,19 @@ const addBookValidation = [
  */
 const updateBookValidation = [
     // Check if the book id is not empty.
-    check("book_id").notEmpty().withMessage("user ID is required"),
+    check("book.book_id").notEmpty().withMessage("user ID is required"),
 
     // Check if the book title is not empty.
-    check("book_title").notEmpty().withMessage("Book title is required"),
+    check("book.book_title").notEmpty().withMessage("Book title is required"),
 
     // Check if the book author is not empty.
-    check("book_author").notEmpty().withMessage("Book author is required"),
+    check("book.book_author").notEmpty().withMessage("Book author is required"),
 
     // Check if the minimum required age is not empty.
-    check("book_min_age_required").notEmpty().withMessage("Minimum required age is required"),
+    check("book.book_min_age_required").notEmpty().withMessage("Minimum required age is required"),
 
     // Check if the book publication date is not empty.
-    check("book_publication").notEmpty().withMessage("Book publication is required"),
+    check("book.book_publication").notEmpty().withMessage("Book publication is required"),
 ];
 
 module.exports = {
